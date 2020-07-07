@@ -22,19 +22,17 @@
 
     <table class="table table-bordered">
         <tr>
+            <th>Date Scraped</th>
             <th>Item ID</th>
             <th>Name</th>
-            <th>Description</th>
-            <th width="280px">Action</th>
+            <th>Price</th>
         </tr>
 	    @foreach ($items as $item)
 	    <tr>
-	        <td></td>
+            <td>{{ $item->timePosted }}</td>
+	        <td>{{ $item->itemId }}</td>
 	        <td>{{ $item->title }}</td>
-	        <td>{{ $item->description }}</td>
-	        <td>
-                
-	        </td>
+	        <td>{{ $item->price }}</td>
 	    </tr>
 	    @endforeach
     </table>
