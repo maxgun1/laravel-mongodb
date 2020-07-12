@@ -22,11 +22,12 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>Date Scraped</th>
+            <th>@sortablelink('timePosted', 'Time Posted')</th>
             <th>Item ID</th>
-            <th>Name</th>
+            <th>Title</th>
             <th>Price</th>
         </tr>
+    @if($items->count())
 	    @foreach ($items as $item)
 	    <tr>
             <td>{{ $item->timePosted }}</td>
@@ -36,6 +37,8 @@
 	    </tr>
 	    @endforeach
     </table>
+    @endif
 
+    {!! $items->appends(\Request::except('page'))->render() !!}
 
 @endsection

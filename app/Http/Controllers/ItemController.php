@@ -14,7 +14,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        //$items = $item->sortable()->paginate(5); // pagination 5 items per page
+         $items = Item::orderBy('timePosted','asc')->paginate(40); // pagination 5 items per page
+        // $items = Item::all();
         return view('items.index',compact('items'));
     }
 
