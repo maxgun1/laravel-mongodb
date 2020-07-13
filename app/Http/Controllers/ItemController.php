@@ -20,10 +20,14 @@ class ItemController extends Controller
         return view('items.index',compact('items'));
     }
 
+    // searches for query in itemId table. 
+
     public function search(Request $request)
     {
          $search = $request->get('q');
-         $results = Item::where('itemId', 'like', "%$search%")->get();
+         $results = Item::where('itemId', 'like', "%$search%")
+         ->orWhere('title', 'like', "%$search%")
+         ->paginate(20);
         return view('search.search')->with('items', $results);
     }
 

@@ -38,7 +38,12 @@
         @endforeach
         
     </table>
-   
- {{-- {!! $results->appends(\Request::except('page','search'))->render() !!}  --}}
+
+    
+
+
+      {!! $items->appends(\Request::except('page'))->render() !!}   
+    {{-- {!! $items->appends(\ItemController::except('page'))->render() !!}  --}}
+    {{-- {!! $items->\Item::appends(request()->query())->links() !!} --}}
 
 @endsection
