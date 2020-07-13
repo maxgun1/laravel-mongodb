@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Ebay Items Scraped</h2>
+                <h2>Ebay Items Search Results</h2>
             </div>
             <div class="pull-right">
             </div>
@@ -18,13 +18,11 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-
-    
-    <div class="row">
+ <div class="row">
 <div class="col-md-4">
-<form action="{{route('search')}}" method="GET">
+<form action="/search" method="GET">
 <div class="form-group">
-    <input type="search" class="form-control" name="q">
+    <input type="search" class="form-control" name="search">
     <span class="form-group-btn">
         <button type="submit" class="btn btn-primary">Search</button>
     </span>
@@ -34,8 +32,6 @@
 </div>
 </div> 
 
-
-
     <table class="table table-bordered">
         <tr>
             <th>@sortablelink('timePosted', 'Time Posted')</th>
@@ -43,21 +39,18 @@
             <th>Title</th>
             <th>Price</th>
         </tr>
-        @if($items->count())
-	    @foreach ($items as $item)
+        
+	    @foreach ($results as $result)
 	    <tr>
-            <td>{{ $item->timePosted }}</td>
-	        <td>{{ $item->itemId }}</td>
-	        <td>{{ $item->title }}</td>
-	        <td>{{ $item->price }}</td>
+            <td>{{ $result->timePosted }}</td>
+	        <td>{{ $result->itemId }}</td>
+	        <td>{{ $result->title }}</td>
+	        <td>{{ $result->price }}</td>
 	    </tr>
         @endforeach
-        @endif
+        
     </table>
-
-    
    
-     {!! $items->appends(\Request::except('page'))->render() !!} 
-
+{{-- {!! $results->appends(\Request::except('page'))->render() !!} --}}
 
 @endsection

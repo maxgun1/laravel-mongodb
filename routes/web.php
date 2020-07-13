@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('items','ItemController');
-
-Route::get('items', ['as' => 'items.index', 'uses' => 'ItemController@index']);
+Route::resource('items','ItemController');
+Route::get('/search','ItemController@search')->name('search');

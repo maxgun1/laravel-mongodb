@@ -15,9 +15,16 @@ class ItemController extends Controller
     public function index()
     {
         //$items = $item->sortable()->paginate(5); // pagination 5 items per page
-         $items = Item::orderBy('timePosted','asc')->paginate(40); // pagination 5 items per page
+         $items = Item::orderBy('timePosted','asc')->paginate(20); // pagination 5 items per page
         // $items = Item::all();
         return view('items.index',compact('items'));
+    }
+
+    public function search(Request $request)
+    {
+         $search = $request->get('q');
+         $results = Item::where('itemId', 'like', "%$search%")->get();
+        return view('search.search')->with('items', $results);
     }
 
     /**
@@ -27,7 +34,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
