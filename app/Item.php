@@ -26,8 +26,7 @@ class Item extends Eloquent
     
     public $sortable = [
         'title', 
-        'timePosted', 
-        'itemId', 
-        'price'
+        'itemId',
+        'timePosted'
     ];
 }

@@ -15,7 +15,7 @@ class ItemController extends Controller
     public function index()
     {
         //$items = $item->sortable()->paginate(5); // pagination 5 items per page
-         $items = Item::orderBy('timePosted','asc')->paginate(20); // pagination 5 items per page
+         $items = Item::orderBy('timePosted', 'desc')->paginate(20); // pagination 5 items per page
         // $items = Item::all();
         return view('items.index',compact('items'));
     }
@@ -30,6 +30,18 @@ class ItemController extends Controller
          ->paginate(20);
         return view('search.search')->with('items', $results);
     }
+
+
+    /* Searches database for results with same itemId */
+/* 
+    public function similar(Similar $similar)
+    {
+        $similar = $item->_id;
+        $similarResults = Item::where('itemId', 'like', "%$similar%");
+        return view('items.show')->with('items', $similarResults);
+    }
+
+ */
 
     /**
      * Show the form for creating a new resource.
@@ -60,7 +72,9 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        return "This is the show method";
+        $currentItemId = $item->itemId;
+        $similarResults = Item::where('itemId', $currentItemId)->orderBy('timePosted', 'desc')->get();
+        return view('items.show',compact('item', 'similarResults','currentItemId'));/* ->with('items', $results); */
     }
 
     /**
