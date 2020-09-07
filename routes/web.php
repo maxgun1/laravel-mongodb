@@ -15,5 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('items','ItemController');
-Route::get('/search','ItemController@search')->name('search');
+Route::resource('items','ItemController')->middleware('auth');
+Route::get('/search','ItemController@search')->name('search')->middleware('auth');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
