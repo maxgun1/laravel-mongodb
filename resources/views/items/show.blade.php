@@ -49,10 +49,13 @@
  
     <table class="table table-bordered">
         <tr>
-            <th>@sortablelink('timePosted', 'Time Posted')</th>
+            {{-- doesnt work
+                 <th>@sortablelink('timePosted', 'Time Posted')</th> --}}
+            <th>Time Posted</th>
             <th>Item ID</th>
             <th>Title</th>
             <th>Price</th>
+            <th>Sold amount at that date</th>
         </tr>
         
       
@@ -62,7 +65,8 @@
             <td>{{ $result->timePosted }}</td>
 	        <td>{{ $result->itemId }}</td>
 	        <td>{{ $result->title }}</td>
-	        <td>{{ $result->price }}</td>
+            <td>{{ $result->price }}</td>
+            <td>{{ $result->totalSold }}</td>
 	    </tr>
         @endforeach
          

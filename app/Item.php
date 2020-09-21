@@ -15,18 +15,21 @@ class Item extends Eloquent
         'title', 
         'timePosted', 
         'itemId', 
+        'totalSold',
         'price'
     ];
     protected $fillable = [
         'title', 
         'timePosted', 
         'itemId', 
+        'totalSold',
         'price'
     ];
     
     public $sortable = [
         'title', 
         'itemId',
+        'totalSold',
         'timePosted'
     ];
 }
