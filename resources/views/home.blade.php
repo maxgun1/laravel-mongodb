@@ -19,6 +19,8 @@
                     <h2>Some Tools</h2>
                         <br>
                         <a href="./items">eBay Items Scraper</a>
+                        <br>
+                        <a href="./weblistings">Finnart Scraper</a>
                     <br>
                     
                 </div>

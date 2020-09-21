@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::resource('weblistings','FinnartController');
 Route::resource('items','ItemController')->middleware('auth');
 Route::get('/search','ItemController@search')->name('search')->middleware('auth');
 
